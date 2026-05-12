@@ -21,12 +21,11 @@ Trained on a dataset of 4,000 images (enriched with Chain-of-Thought reasoning),
 * **JSON Parse Success Rate:** 100%
 * **Hardware:** Fits comfortably on a single free-tier Tesla T4 GPU (8GB VRAM during inference).
 
-## Repository Structure
-* `synthetic_data_generation.ipynb`: Script using the free Groq API to generate ground-truth CoT grades for the raw KIDO dataset.
-* `VLM_Training_and_Inference.ipynb`: The complete training loop, custom collate function, and evaluation metrics.
-* `sample_data/`: A few sample images and their expected JSON outputs.
+## 🤗 Live Model Weights
+I have hosted the trained LoRA adapters on Hugging Face so you can download and test the model without retraining it from scratch:
+**[View Model on Hugging Face](https://huggingface.co/Divit56/VLM_grader)**
 
-## How to Run
-1. Clone the repo and install dependencies:
-   ```bash
-   pip install -r requirements.txt
+```python
+from peft import PeftModel
+# Load the live weights directly
+model = PeftModel.from_pretrained(base_model, "Divit56/VLM_grader")
