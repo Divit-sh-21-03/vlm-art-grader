@@ -37,7 +37,7 @@ model = PeftModel.from_pretrained(base_model, "Divit56/VLM_grader")
 * `Codes/Synthetic_data_generator.ipynb`: Script using the free Groq API to generate ground-truth Chain-of-Thought grades for the raw KIDO dataset.
 * `Codes/vlm_art_grader.ipynb`: The complete training loop, custom collate function, and evaluation metrics.
 * `dataset/graded_dataset.json`: A sample of the dataset containing images graded using Groq's Llama 3.2 Vision API.
-* `output.jpeg`: A sample visual output demonstrating the model's grading capabilities and predictions.
+* `output.png`: A sample visual output demonstrating the model's grading capabilities and predictions.
 
 ## How to Run
 1. Clone the repo and install the required dependencies:
