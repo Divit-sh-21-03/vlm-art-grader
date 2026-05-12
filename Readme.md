@@ -23,7 +23,7 @@ Trained on a dataset of 4,000 images (enriched with Chain-of-Thought reasoning) 
 * **Inference Speed:** ~10.69 seconds per image 
 * **Hardware:** Fits comfortably on a single free-tier Tesla T4 GPU (8GB VRAM during inference).
 
-## 🤗 Live Model Weights
+##  Live Model Weights
 I have hosted the trained LoRA adapters on Hugging Face so you can download and test the model without retraining it from scratch:
 **[View Model on Hugging Face](https://huggingface.co/Divit56/VLM_grader)**
 
