@@ -21,7 +21,7 @@ Trained on a dataset of 4,000 images (enriched with Chain-of-Thought reasoning),
 * **JSON Parse Success Rate:** 100%
 * **Hardware:** Fits comfortably on a single free-tier Tesla T4 GPU (8GB VRAM during inference).
 
-## 🤗 Live Model Weights
+##  Live Model Weights
 I have hosted the trained LoRA adapters on Hugging Face so you can download and test the model without retraining it from scratch:
 **[View Model on Hugging Face](https://huggingface.co/Divit56/VLM_grader)**
 
@@ -29,3 +29,19 @@ I have hosted the trained LoRA adapters on Hugging Face so you can download and 
 from peft import PeftModel
 # Load the live weights directly
 model = PeftModel.from_pretrained(base_model, "Divit56/VLM_grader")
+```
+
+## Repository Structure
+* `Codes/Synthetic_data_generator.ipynb`: Script using the free Groq API to generate ground-truth Chain-of-Thought grades for the raw KIDO dataset.
+* `Codes/vlm_art_grader.ipynb`: The complete training loop, custom collate function, and evaluation metrics.
+* `dataset/sample_dataset.json`: A sample of the dataset containing images graded using Groq's Llama 3.2 Vision API with Chain-of-Thought reasoning.
+
+## How to Run
+1. Clone the repo and install dependencies:
+   ```bash
+   git clone [https://github.com/Divit-sh-21-03/vlm-art-grader.git](https://github.com/Divit-sh-21-03/vlm-art-grader.git)
+   cd vlm-art-grader
+   pip install -r requirements.txt
+   ```
+2. (Optional) Run `Codes/Synthetic_data_generator.ipynb` if you want to rebuild the dataset from scratch using the Groq API.
+3. Open `Codes/vlm_art_grader.ipynb` in Jupyter or Kaggle. Ensure your runtime has a GPU with at least 14GB VRAM (like a Tesla T4) and run the cells sequentially to train and evaluate the model.
