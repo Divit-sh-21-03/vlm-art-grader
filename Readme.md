@@ -2,7 +2,7 @@
 
 This repository contains a parameter-efficient fine-tuning (PEFT) pipeline that trains a Vision-Language Model to automatically grade children's artwork. It evaluates images across three dimensions: Clarity, Detail, and Creativity.
 
-I built this to solve a specific scaling problem: proprietary APIs like Gemini cost ₹2 to ₹5 per evaluation. By fine-tuning a quantized 2B parameter model, this pipeline brings the inference cost down to under ₹0.10 per image, allowing educational platforms to scale evaluations without breaking the bank.
+I built this to solve a specific scaling problem: proprietary APIs like Gemini cost ₹2 to ₹5 per evaluation. By fine-tuning a quantized 2B parameter model, this pipeline brings the inference cost down , allowing educational platforms to scale evaluations.
 
 ## Tech Stack
 * **Base Model:** Qwen2-VL-2B-Instruct
@@ -15,7 +15,7 @@ If you've tried fine-tuning VLMs, you've probably seen training loss flatline ar
 To fix this, I wrote a custom data collation function that implements "triple-masking." It initializes all labels to `-100` (ignore), searches for the `<|im_start|>assistant` boundary, and strictly unmasks *only* the assistant's generated JSON response. This forces the model to only calculate loss on the actual grading output. After implementing this, the loss dropped from 2.35 to below 0.3 almost immediately.
 
 ## Performance
-Trained on a dataset of 4,000 images (enriched with Chain-of-Thought reasoning) and evaluated on 406 test samples, the model achieves:
+Trained on a dataset of 2100 images (enriched with Chain-of-Thought reasoning) and evaluated on 406 test samples, the model achieves:
 * **Mean Absolute Error (MAE):** 0.247
 * **Root Mean Squared Error (RMSE):** 0.556
 * **Classification Accuracy:** 87.3% (Overall F1 Score: 0.751)
