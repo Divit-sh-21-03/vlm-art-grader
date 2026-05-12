@@ -1,0 +1,149 @@
+# Model Weights and Checkpoints
+*.bin
+*.pt
+*.pth
+*.ckpt
+*.safetensors
+*.h5
+*.pb
+*.onnx
+
+# Large Model Files
+models/
+checkpoints/
+lora_adapters/
+saved_models/
+weights/
+
+# Dataset Files (too large for GitHub)
+graded_dataset.json
+*.hdf5
+*.arrow
+*.parquet
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Jupyter Notebook
+.ipynb_checkpoints
+*/.ipynb_checkpoints/*
+.virtual_documents/
+
+# Environment
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# API Keys and Secrets
+secrets.py
+.env
+*.key
+*.pem
+api_keys.txt
+
+# Logs and Cache
+*.log
+logs/
+*.cache
+.pytest_cache/
+.coverage
+.hypothesis/
+.tox/
+.cache
+
+# Temporary Files
+*.tmp
+*.temp
+tmp/
+temp/
+
+# Large Data Files
+*.csv
+*.tsv
+*.zip
+*.tar
+*.tar.gz
+*.rar
+*.7z
+
+# Kaggle Specific
+kaggle.json
+.kaggle/
+
+# HuggingFace Cache
+.cache/
+transformers_cache/
+huggingface/
+
+# Weights & Biases
+wandb/
+
+# TensorBoard
+runs/
+tensorboard/
+
+# Generated Images
+generated_images/
+output_images/
+*.png
+*.jpg
+*.jpeg
+*.gif
+
+# Except for assets (documentation images)
+!assets/*.png
+!assets/*.jpg
+!assets/*.jpeg
+!sample_data/*.png
+!sample_data/*.jpg
+!sample_data/*.jpeg
+
+# MacOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Linux
+*~
+
+# Backup files
+*.bak
+*.backup
+*.old
