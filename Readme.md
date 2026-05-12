@@ -15,13 +15,15 @@ If you've tried fine-tuning VLMs, you've probably seen training loss flatline ar
 To fix this, I wrote a custom data collation function that implements "triple-masking." It initializes all labels to `-100` (ignore), searches for the `<|im_start|>assistant` boundary, and strictly unmasks *only* the assistant's generated JSON response. This forces the model to only calculate loss on the actual grading output. After implementing this, the loss dropped from 2.35 to below 0.3 almost immediately.
 
 ## Performance
-Trained on a dataset of 4,000 images (enriched with Chain-of-Thought reasoning), the model achieves:
+Trained on a dataset of 4,000 images (enriched with Chain-of-Thought reasoning) and evaluated on 406 test samples, the model achieves:
 * **Mean Absolute Error (MAE):** 0.247
-* **Classification Accuracy:** 87.3%
-* **JSON Parse Success Rate:** 100%
+* **Root Mean Squared Error (RMSE):** 0.556
+* **Classification Accuracy:** 87.3% (Overall F1 Score: 0.751)
+* **JSON Parse Success Rate:** 100% (0 parse failures)
+* **Inference Speed:** ~10.69 seconds per image 
 * **Hardware:** Fits comfortably on a single free-tier Tesla T4 GPU (8GB VRAM during inference).
 
-##  Live Model Weights
+## 🤗 Live Model Weights
 I have hosted the trained LoRA adapters on Hugging Face so you can download and test the model without retraining it from scratch:
 **[View Model on Hugging Face](https://huggingface.co/Divit56/VLM_grader)**
 
@@ -34,10 +36,11 @@ model = PeftModel.from_pretrained(base_model, "Divit56/VLM_grader")
 ## Repository Structure
 * `Codes/Synthetic_data_generator.ipynb`: Script using the free Groq API to generate ground-truth Chain-of-Thought grades for the raw KIDO dataset.
 * `Codes/vlm_art_grader.ipynb`: The complete training loop, custom collate function, and evaluation metrics.
-* `dataset/graded_dataset.json`: A sample of the dataset containing images graded using Groq's Llama 3.2 Vision API with Chain-of-Thought reasoning.
+* `dataset/graded_dataset.json`: A sample of the dataset containing images graded using Groq's Llama 3.2 Vision API.
+* `output.jpeg`: A sample visual output demonstrating the model's grading capabilities and predictions.
 
 ## How to Run
-1. Clone the repo and install dependencies:
+1. Clone the repo and install the required dependencies:
    ```bash
    git clone [https://github.com/Divit-sh-21-03/vlm-art-grader.git](https://github.com/Divit-sh-21-03/vlm-art-grader.git)
    cd vlm-art-grader
